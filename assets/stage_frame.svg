@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff4a0"/><stop offset=".18" stop-color="#fffbd4"/><stop offset=".36" stop-color="#ffc928"/><stop offset=".65" stop-color="#ff9b00"/><stop offset=".85" stop-color="#ffde55"/><stop offset="1" stop-color="#fa8200"/></linearGradient>
+ <linearGradient id="in" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#fffadc"/><stop offset=".45" stop-color="#ffeb7d"/><stop offset="1" stop-color="#e97e00"/></linearGradient>
+ <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#a55400" flood-opacity=".42"/></filter>
+</defs>
+<path d="M164 45 Q80 50 52 118 Q18 194 22 360 L22 637 Q23 761 112 807 Q173 841 347 831 Q563 807 600 837 Q638 807 851 831 Q1027 841 1088 807 Q1178 761 1178 637 L1178 360 Q1182 193 1148 118 Q1119 50 1036 45 Q862 35 731 55 Q636 77 600 67 Q561 77 469 55 Q337 35 164 45Z" stroke="#c75500" stroke-width="38" filter="url(#shadow)"/>
+<path d="M164 45 Q80 50 52 118 Q18 194 22 360 L22 637 Q23 761 112 807 Q173 841 347 831 Q563 807 600 837 Q638 807 851 831 Q1027 841 1088 807 Q1178 761 1178 637 L1178 360 Q1182 193 1148 118 Q1119 50 1036 45 Q862 35 731 55 Q636 77 600 67 Q561 77 469 55 Q337 35 164 45Z" stroke="url(#gold)" stroke-width="32"/>
+<path d="M164 45 Q80 50 52 118 Q18 194 22 360 L22 637 Q23 761 112 807 Q173 841 347 831 Q563 807 600 837 Q638 807 851 831 Q1027 841 1088 807 Q1178 761 1178 637 L1178 360 Q1182 193 1148 118 Q1119 50 1036 45 Q862 35 731 55 Q636 77 600 67 Q561 77 469 55 Q337 35 164 45Z" stroke="#fff5a7" stroke-width="4"/>
+<path d="M173 83 Q98 87 78 147 Q55 208 58 357 L58 623 Q60 726 138 772 Q207 803 345 792 Q541 775 600 795 Q670 775 853 792 Q993 803 1062 772 Q1141 726 1142 623 L1142 357 Q1145 208 1121 147 Q1101 87 1027 83 Q847 75 728 90 Q630 103 600 99 Q563 103 472 90 Q354 75 173 83Z" stroke="#fffbd4" stroke-opacity=".75" stroke-width="3"/>
+<g filter="url(#glow)" fill="#fffbe0" stroke="#ffbd16" stroke-width="3">
+<path d="M600 7 L619 46 L659 57 L619 68 L600 108 L581 68 L541 57 L581 46Z"/>
+<path d="M600 793 L616 824 L650 832 L616 842 L600 877 L584 842 L550 832 L584 824Z"/>
+<path d="M72 580 L85 603 L112 612 L85 622 L72 650 L59 622 L32 612 L59 603Z"/>
+<path d="M1128 580 L1141 603 L1168 612 L1141 622 L1128 650 L1115 622 L1088 612 L1115 603Z"/>
+<path d="M106 244 L110 257 L123 261 L110 265 L106 279 L101 265 L88 261 L101 257Z"/>
+<path d="M1088 226 L1092 239 L1105 243 L1092 247 L1088 261 L1083 247 L1070 243 L1083 239Z"/>
+</g>
+<g stroke="#fff8b0" stroke-width="5" stroke-linecap="round" opacity=".8"><path d="M512 43 Q545 9 579 36"/><path d="M623 36 Q657 9 689 43"/></g>
+</svg>

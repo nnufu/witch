@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff80bb">
+<meta name="description" content="Xứ sở cổ tích – trò chơi chọn học sinh ngẫu nhiên không lặp, có ảnh chibi, sân khấu cổ tích và lưu dữ liệu trên máy.">
+<title>Xứ sở cổ tích · Lucky Wheel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg aria-hidden="true" class="svg-library" xmlns="http://www.w3.org/2000/svg">
+ <symbol id="ic-eye" viewBox="0 0 24 24"><path d="M2 12s3.9-7 10-7 10 7 10 7-3.9 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3.2"/></symbol>
+ <symbol id="ic-eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 5.1C16.9 4.3 22 12 22 12a15 15 0 0 1-3.4 4.3M6.4 6.4A16 16 0 0 0 2 12s3.9 7 10 7c1.4 0 2.8-.4 4-1.1"/><path d="M10 10a3.2 3.2 0 0 0 4 4"/></symbol>
+ <symbol id="ic-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+ <symbol id="ic-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9a5 5 0 0 1 0 6M20 6a9 9 0 0 1 0 12"/></symbol>
+ <symbol id="ic-volume-off" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m17 9 6 6m0-6-6 6"/></symbol>
+ <symbol id="ic-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+ <symbol id="ic-settings" viewBox="0 0 24 24"><path d="m9.5 3-.5 2.1a8 8 0 0 0-1.8 1.1l-2-.7-2 3.5 1.6 1.6a8 8 0 0 0 0 2.2L3.2 14l2 3.5 2-.7A8 8 0 0 0 9 17.9l.5 2.1h4l.5-2.1a8 8 0 0 0 1.8-1.1l2 .7 2-3.5-1.6-1.6a8 8 0 0 0 0-2.2l1.6-1.6-2-3.5-2 .7A8 8 0 0 0 14 5.1L13.5 3z"/><circle cx="11.5" cy="11.5" r="3"/></symbol>
+ <symbol id="ic-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2.5-3 5"/><path d="M12 18h.01"/></symbol>
+ <symbol id="ic-play" viewBox="0 0 24 24"><path d="m7 4 14 8-14 8z"/></symbol>
+ <symbol id="ic-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5"/><path d="M20 11A8 8 0 0 0 6 5L4 7M4 13a8 8 0 0 0 14 6l2-2"/></symbol>
+ <symbol id="ic-next" viewBox="0 0 24 24"><path d="m3 5 9 7-9 7zM12 5l9 7-9 7z"/></symbol>
+ <symbol id="ic-history" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 3"/></symbol>
+ <symbol id="ic-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol>
+ <symbol id="ic-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></symbol>
+ <symbol id="ic-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6m4-6v6"/></symbol>
+ <symbol id="ic-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+ <symbol id="ic-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 18v3h16v-3"/></symbol>
+ <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+ <symbol id="ic-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-2a7 7 0 0 1 14 0v2M17 5a4 4 0 0 1 0 8M18 15a6 6 0 0 1 4 6"/></symbol>
+ <symbol id="ic-star" viewBox="0 0 24 24"><path d="m12 2 3.3 6.7 7.4 1.1-5.4 5.3 1.3 7.4-6.6-3.5-6.6 3.5 1.3-7.4-5.4-5.3 7.4-1.1z"/></symbol>
+</svg>
+<div class="app-shell" id="appShell">
+ <header class="topbar">
+   <div class="topbar-logo" role="img" aria-label="Xứ sở cổ tích"></div>
+   <div class="banner" aria-label="Xứ sở cổ tích, Lucky Wheel">
+     <div class="banner-subtitle">Lucky Wheel</div>
+   </div>
+   <div class="tool-group" role="toolbar" aria-label="Công cụ trò chơi">
+     <button class="icon-btn view-toggle" id="viewBtn" type="button" aria-pressed="false" title="Hiển thị tất cả học sinh" aria-label="Hiển thị tất cả học sinh"><svg><use href="#ic-eye"/></svg></button>
+     <button class="icon-btn" id="musicBtn" title="Bật nhạc nền" aria-label="Bật nhạc nền"><svg><use href="#ic-music"/></svg></button>
+     <button class="icon-btn" id="soundBtn" title="Tắt âm thanh hiệu ứng" aria-label="Tắt âm thanh"><svg><use href="#ic-volume"/></svg></button>
+     <button class="icon-btn" id="fullscreenBtn" title="Toàn màn hình" aria-label="Toàn màn hình"><svg><use href="#ic-expand"/></svg></button>
+     <button class="icon-btn" id="settingsBtn" title="Cài đặt trò chơi" aria-label="Cài đặt trò chơi"><svg><use href="#ic-settings"/></svg></button>
+     <button class="icon-btn" id="helpBtn" title="Hướng dẫn sử dụng" aria-label="Hướng dẫn sử dụng"><svg><use href="#ic-help"/></svg></button>
+   </div>
+   <!-- Ba ô thống kê: bên dưới hàng nút tròn ở góc phải -->
+   <div class="status-pills header-status">
+    <span class="status-pill">👧 <strong id="totalCount">0</strong> học sinh</span>
+    <span class="status-pill remaining">⭐ Còn <strong id="remainingCount">0</strong> chưa chọn</span>
+    <div class="stage-badge stage-badge-footer"><span id="groupLabel">Sân khấu cổ tích</span><span class="badge-dot">✦</span><span id="poolLabel">0 học sinh</span></div>
+   </div>
+   <!-- Thông báo khi đổi chế độ hiện tất cả / theo nhóm: dưới banner ở giữa -->
+   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+ </header>
+ <!-- Góc giáo viên: bấm để tải/đổi ảnh, kết quả quay xuất hiện ngay cạnh giáo viên -->
+ <aside class="teacher-corner" id="teacherCorner" aria-label="Giáo viên và học sinh được chọn">
+  <input type="file" id="teacherPhotoInput" accept="image/png,image/jpeg,image/webp" hidden aria-label="Chọn ảnh chibi giáo viên">
+  <div class="teacher-figure">
+   <button class="teacher-upload" id="teacherUploadBtn" type="button" title="Tải hoặc thay ảnh chibi giáo viên" aria-label="Tải hoặc thay ảnh chibi giáo viên">
+    <span class="teacher-add" id="teacherAdd"><svg><use href="#ic-upload"/></svg><span>Ảnh chibi<br>Giáo viên</span></span>
+    <img id="teacherImage" class="teacher-image" alt="Ảnh chibi giáo viên" hidden>
+   </button>
+   <span class="teacher-edit" id="teacherEdit" hidden aria-hidden="true">✎</span>
+  </div>
+  <div class="chosen-area" id="chosenArea" aria-label="Học sinh được chọn trong lượt vừa rồi" aria-live="polite" hidden>
+   <div id="chosenStudents" class="chosen-students"></div>
+  </div>
+  <div id="teacherMagic" class="teacher-magic" aria-hidden="true"></div>
+ </aside>
+ <main class="game-main">
+   <div class="stage-wrap" id="stageWrap">
+     <div class="stage-scene" id="stageScene" aria-label="Sân khấu cổ tích tỉ lệ 2 trên 1">
+       <img class="stage-landscape" id="stageLandscape" src="assets/stage_combined_2to1.png" alt="Sân khấu cổ tích tỉ lệ 2:1 với viền vàng, vườn hoa, cầu vồng, hồ nước, thác nước, lâu đài nhỏ phía xa và bệ sân khấu hồng">
+       <div class="chibis" id="chibiLayer" aria-live="off"></div>
+       <div class="scene-empty" id="sceneEmpty">
+         <div class="empty-inner"><span class="empty-sparkle">✦ ✧ ✦</span><h2>Sân khấu đang chờ những bạn nhỏ!</h2>
+          <p>Thêm tên và tải ảnh chibi trong mục Cài đặt để bắt đầu trò chơi.</p>
+          <button class="mini-action" id="startSetupBtn">Thiết lập danh sách</button></div>
+       </div>
+     </div>
+   </div>
+ </main>
+ <footer class="bottom-area">
+
+   <div class="control-bar">
+    <label class="pick-label" for="pickCount">Chọn <select id="pickCount" aria-label="Số học sinh chọn mỗi lượt"><option value="1">1 HS</option><option value="2">2 HS</option><option value="3">3 HS</option><option value="4">4 HS</option><option value="5">5 HS</option></select></label>
+    <button class="game-btn secondary asset-secondary" id="resetBtn" aria-label="Làm mới" title="Làm mới"></button>
+    <button class="game-btn primary asset-button" id="drawBtn" aria-label="Quay ngẫu nhiên" title="Quay ngẫu nhiên"></button>
+    <button class="game-btn secondary asset-secondary" id="nextBtn" aria-label="Lượt tiếp" title="Lượt tiếp"></button>
+    <button class="game-btn secondary asset-secondary" id="historyBtn" aria-label="Lịch sử" title="Lịch sử"></button>
+   </div>
+ </footer>
+</div>
+
+<!-- Cài đặt: nội dung ẩn khỏi sân khấu cho đến khi giáo viên mở -->
+<div class="modal-backdrop" id="settingsModal" hidden>
+ <section class="modal settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+   <header class="modal-header"><div><h2 id="settingsTitle">⚙️ Cài đặt trò chơi</h2><p>Quản lý lớp học, ảnh chibi và hiệu ứng</p></div><button class="close-btn" data-close="settingsModal" aria-label="Đóng"><svg><use href="#ic-close"/></svg></button></header>
+   <nav class="tabs" role="tablist" aria-label="Nhóm cài đặt">
+    <button class="tab active" data-tab="students" role="tab">👧 Học sinh</button><button class="tab" data-tab="photos" role="tab">🖼️ Ảnh chibi</button><button class="tab" data-tab="rules" role="tab">✨ Luật và hiệu ứng</button><button class="tab" data-tab="data" role="tab">💾 Dữ liệu</button>
+   </nav>
+   <div class="modal-content">
+    <div class="tab-panel active" data-panel="students">
+      <div class="hint"><strong>Nhập danh sách lớp:</strong> Mỗi dòng là họ tên một học sinh. Số học sinh sẽ tự tính theo danh sách đã nhập.</div>
+      <textarea id="bulkNames" rows="4" placeholder="Nguyễn Văn An&#10;Trần Thị Bình&#10;Lê Minh Châu"></textarea>
+      <div class="action-row"><button class="mini-action" id="appendNamesBtn">+ Thêm các tên</button><button class="outline-action" id="replaceNamesBtn">Thay toàn bộ danh sách</button><button class="outline-action" id="addStudentBtn">+ Thêm 1 học sinh</button></div>
+      <div class="amount-builder"><label for="studentAmount">Hoặc nhập số lượng học sinh:</label><input type="number" id="studentAmount" min="1" max="300" value="35"><button class="outline-action" id="makeSlotsBtn">Tạo đủ số ô tên</button><span>Chỉ thêm ô còn thiếu, không xóa học sinh hiện có.</span></div>
+      <div class="table-top"><strong>Danh sách hiện tại <span id="studentTableCount">(0)</span></strong><input id="studentSearch" type="search" placeholder="Tìm họ tên..." aria-label="Tìm học sinh"></div>
+      <div class="student-list" id="studentsList"></div>
+    </div>
+    <div class="tab-panel" data-panel="photos">
+      <div class="hint"><strong>Tải nhiều ảnh một lần:</strong> Hỗ trợ PNG/JPG/WebP. Hãy kiểm tra bảng ghép tên và ảnh trước khi lưu. Ảnh được lưu tại trình duyệt, không gửi lên máy chủ.</div>
+      <div class="drop-area" id="imageDropZone" tabindex="0" role="button" aria-label="Tải nhiều ảnh chibi"><svg><use href="#ic-upload"/></svg><strong>Chọn nhiều ảnh chibi hoặc kéo thả vào đây</strong><span>Có thể tải 10, 20, 35 ảnh cùng lúc</span><button class="mini-action" type="button" id="uploadManyBtn">Chọn ảnh từ máy tính</button></div>
+      <input type="file" id="multiPhotoInput" accept="image/png,image/jpeg,image/webp" multiple hidden>
+      <p class="muted" id="photoSummary">Chưa có ảnh nào.</p>
+      <div class="photo-grid" id="photoGrid"></div>
+    </div>
+    <div class="tab-panel" data-panel="rules">
+      <div class="setting-line"><div><strong>Chế độ không lặp</strong><small>Học sinh đã được chọn sẽ không được chọn lại cho đến khi đặt lại vòng.</small></div><span class="locked-setting">Đã bật ✓</span></div>
+      <div class="setting-line"><div><strong>Chế độ hiển thị sân khấu</strong><small>Nhấn nút hình con mắt (bên trái nút nhạc) để chuyển giữa tối đa 10 chibi/nhóm và tất cả học sinh. Học sinh đã được chọn sẽ được làm mờ ở chế độ hiện tất cả.</small></div><span class="locked-setting">Nút 👁</span></div>
+      <div class="setting-line"><div><strong>Ẩn tên khi di chuyển</strong><small>Chỉ hiện tên khi học sinh được chọn.</small></div><span class="locked-setting">Đã bật ✓</span></div>
+      <div class="setting-line"><label for="speedSelect"><strong>Tốc độ di chuyển</strong><small>Điều chỉnh nhịp chuyển động của các ảnh chibi.</small></label><select id="speedSelect"><option value="slow">Chậm</option><option value="normal">Vừa</option><option value="fast">Nhanh</option></select></div>
+      <div class="setting-line"><label for="reduceMotion"><strong>Giảm chuyển động</strong><small>Hữu ích khi máy chiếu hoặc trình duyệt hoạt động chậm.</small></label><input type="checkbox" id="reduceMotion"></div>
+    </div>
+    <div class="tab-panel" data-panel="data">
+      <div class="hint"><strong>Lưu dữ liệu tự động:</strong> Hệ thống sử dụng IndexedDB trên thiết bị này. Hãy xuất bản sao lưu trước khi xóa dữ liệu trình duyệt hoặc chuyển máy tính.</div>
+      <div class="data-buttons"><button class="mini-action" id="exportBtn"><svg><use href="#ic-download"/></svg> Xuất bản sao lưu (.json)</button><button class="outline-action" id="importBtn"><svg><use href="#ic-upload"/></svg> Nhập bản sao lưu</button><input type="file" id="importInput" accept="application/json,.json" hidden></div>
+      <div class="danger-zone"><strong>Thao tác cần xác nhận</strong><p>Đặt lại vòng chọn không xóa ảnh và tên. Xóa tất cả dữ liệu sẽ xóa cả ảnh chibi của học sinh trên thiết bị này.</p><button class="outline-action" id="clearHistoryBtn">Xóa lịch sử</button><button class="danger-action" id="eraseAllBtn">Xóa toàn bộ dữ liệu</button></div>
+    </div>
+   </div>
+   <footer class="modal-footer"><span id="saveStatus">Dữ liệu được lưu tự động</span><button class="mini-action" data-close="settingsModal">Hoàn tất</button></footer>
+ </section>
+</div>
+
+<!-- Bảng gán nhiều ảnh vào tên trước khi lưu -->
+<div class="modal-backdrop" id="assignModal" hidden>
+ <section class="modal assign-modal" role="dialog" aria-modal="true" aria-labelledby="assignTitle">
+  <header class="modal-header"><div><h2 id="assignTitle">🖼️ Ghép ảnh chibi và tên học sinh</h2><p>Kiểm tra đúng người – đúng ảnh trước khi xác nhận</p></div><button class="close-btn" data-close="assignModal" aria-label="Đóng"><svg><use href="#ic-close"/></svg></button></header>
+  <div class="modal-content"><div class="hint" id="assignmentHint">Mỗi ảnh cần ghép với đúng học sinh.</div><div class="assignment-grid" id="assignmentGrid"></div></div>
+  <footer class="modal-footer"><span id="assignCount">0 ảnh</span><div class="action-row"><button class="outline-action" data-close="assignModal">Hủy</button><button class="mini-action" id="confirmAssignmentsBtn">✓ Xác nhận và lưu</button></div></footer>
+ </section>
+</div>
+
+<!-- Lịch sử -->
+<div class="modal-backdrop" id="historyModal" hidden>
+ <section class="modal history-modal" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+  <header class="modal-header"><div><h2 id="historyTitle">🕘 Lịch sử lựa chọn</h2><p>Các lượt chọn ngẫu nhiên đã thực hiện</p></div><button class="close-btn" data-close="historyModal" aria-label="Đóng"><svg><use href="#ic-close"/></svg></button></header>
+  <div class="modal-content" id="historyContent"></div><footer class="modal-footer"><span>Lịch sử chỉ lưu trên thiết bị này</span><button class="mini-action" data-close="historyModal">Đóng</button></footer>
+ </section>
+</div>
+
+<!-- Hướng dẫn -->
+<div class="modal-backdrop" id="helpModal" hidden>
+ <section class="modal help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <header class="modal-header"><div><h2 id="helpTitle">🌟 Hướng dẫn chơi Xứ sở cổ tích</h2><p>Dành cho giáo viên tiểu học</p></div><button class="close-btn" data-close="helpModal" aria-label="Đóng"><svg><use href="#ic-close"/></svg></button></header>
+  <div class="modal-content help-content"><p><strong>1. Thêm học sinh:</strong> Mở ⚙️ Cài đặt → Học sinh → dán danh sách (mỗi dòng một tên) → Thêm các tên.</p><p><strong>2. Thêm ảnh:</strong> Mở Ảnh chibi → tải nhiều ảnh PNG/WebP/JPG cùng lúc → kiểm tra tên ứng với từng ảnh → Xác nhận.</p><p><strong>3. Ảnh giáo viên:</strong> Bấm nút Ảnh chibi Giáo viên ở góc trái để tải ảnh giáo viên. Bấm lại ảnh để thay ảnh.</p><p><strong>4. Chơi:</strong> Chọn 1 đến 5 học sinh rồi nhấn <strong>Quay ngẫu nhiên</strong>. Học sinh được chọn bay đến đứng cạnh giáo viên, kèm tên và sao vàng. Bấm <strong>Lượt tiếp</strong> để dọn kết quả.</p><p><strong>5. Không lặp:</strong> Học sinh đã được chọn sẽ tạm ra khỏi vòng cho đến khi giáo viên nhấn Làm mới.</p><p><strong>6. Chế độ hình con mắt:</strong> Nhấn 👁 ở bên trái nút nhạc để hiển thị đồng thời tất cả học sinh đã có ảnh. Nhấn lần nữa để trở về chế độ luân phiên tối đa 10 em/nhóm. Ở chế độ hiển thị tất cả, học sinh đã được chọn được làm mờ nhưng vẫn xuất hiện. Kết quả quay luôn chỉ lấy từ danh sách chưa được chọn.</p><p><strong>7. Chuyển máy:</strong> Dùng Cài đặt → Dữ liệu → Xuất bản sao lưu, rồi nhập trên máy khác. Không cần đăng nhập tài khoản.</p></div>
+  <footer class="modal-footer"><span>Chúc lớp mình có những giờ học vui!</span><button class="mini-action" data-close="helpModal">Đã hiểu</button></footer>
+ </section>
+</div>
+
+<input type="file" id="singlePhotoInput" accept="image/png,image/jpeg,image/webp" hidden>
+<script src="game.js" defer></script>
+</body>
+</html>
